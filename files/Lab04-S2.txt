@@ -1,0 +1,13 @@
+! Computer Networks · Lab 4 · VLAN Trunking and Inter-VLAN Routing · configuration script for S2
+! Paste into the CLI tab of S2 at the S2# prompt: type enable first, and its password if one is set. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step A3 · The other end: S2
+configure terminal
+interface fastEthernet 0/24
+description Trunk to S1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+end
+
+! ---- Save
+copy running-config startup-config

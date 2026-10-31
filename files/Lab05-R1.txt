@@ -1,0 +1,48 @@
+! Computer Networks · Lab 5 · Console, Telnet and SSH · configuration script for R1
+! Paste into the CLI tab of R1 from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step A1 · R1 through the console: the basics
+enable
+configure terminal
+hostname R1
+no ip domain-lookup
+enable secret class
+line console 0
+password cisco
+login
+logging synchronous
+banner motd #Authorised access only - R1#
+end
+
+! ---- Step A2 · Put R1 on the network
+configure terminal
+interface gigabitEthernet 0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+end
+copy running-config startup-config
+
+
+! ---- Step B1 · Open the vty lines on R1
+configure terminal
+line vty 0 4
+password cisco
+login
+end
+
+! ---- Step C1 · Prepare SSH on R1: domain, user, keys, version
+configure terminal
+ip domain-name campus.local
+username admin secret cisco123
+crypto key generate rsa
+1024
+ip ssh version 2
+end
+
+! ---- Step C2 · Point the vty lines at SSH and the user database
+configure terminal
+line vty 0 15
+transport input ssh
+login local
+end
+copy running-config startup-config

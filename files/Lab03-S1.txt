@@ -1,0 +1,65 @@
+! Computer Networks · Lab 3 · VLANs · configuration script for S1
+! Paste into the CLI tab of S1 from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step A1 · A tight base configuration
+enable
+configure terminal
+hostname S1
+no ip domain-lookup
+enable secret class
+line console 0
+logging synchronous
+end
+
+! ---- Step A2 · Give S1 an address on VLAN 1
+configure terminal
+interface vlan 1
+ip address 192.168.1.253 255.255.255.0
+no shutdown
+end
+
+! ---- Step A4 · Save to NVRAM
+copy running-config startup-config
+
+
+! ---- Step B2 · Create and name the three VLANs on S1
+configure terminal
+vlan 10
+name IS_Students
+vlan 20
+name CS_Students
+vlan 30
+name IT_Students
+end
+
+! ---- Step B3 · Assign access ports one at a time
+configure terminal
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 10
+interface fastEthernet 0/3
+switchport mode access
+switchport access vlan 10
+interface fastEthernet 0/4
+switchport mode access
+switchport access vlan 20
+interface fastEthernet 0/5
+switchport mode access
+switchport access vlan 20
+interface fastEthernet 0/6
+switchport mode access
+switchport access vlan 20
+end
+
+! ---- Step B4 · Assign a range of ports
+configure terminal
+interface range fastEthernet 0/7-10
+switchport mode access
+switchport access vlan 30
+end
+
+! ---- Save
+copy running-config startup-config

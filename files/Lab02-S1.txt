@@ -1,0 +1,40 @@
+! Computer Networks · Lab 2 · Basic Switch and Router Configuration · configuration script for S1
+! Paste into the CLI tab of S1 from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step A1 · Look before you touch
+enable
+
+! ---- Step A2 · Name the switch, and stop the DNS pauses
+configure terminal
+hostname S1
+no ip domain-lookup
+end
+
+! ---- Step A3 · Lock the console
+configure terminal
+line console 0
+password cisco
+login
+logging synchronous
+end
+
+! ---- Step A4 · Protect privileged mode: password, then secret
+configure terminal
+enable password class123
+end
+configure terminal
+enable secret class
+end
+
+! ---- Step A5 · Encrypt the rest
+configure terminal
+service password-encryption
+end
+
+! ---- Step A6 · Leave a message at the door
+configure terminal
+banner motd #Authorised access only - S1#
+end
+
+! ---- Step A7 · Save
+copy running-config startup-config

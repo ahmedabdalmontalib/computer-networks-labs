@@ -1,0 +1,17 @@
+! Computer Networks · Lab 2 · Basic Switch and Router Configuration · configuration script for R1
+! Paste into the CLI tab of R1 from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step B2 · The same commands on R1
+enable
+configure terminal
+hostname R1
+no ip domain-lookup
+enable secret class
+line console 0
+password cisco
+login
+logging synchronous
+service password-encryption
+banner motd #Authorised access only - R1#
+end
+copy running-config startup-config

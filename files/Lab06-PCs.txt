@@ -1,0 +1,7 @@
+PC addressing (Desktop -> IP Configuration -> Static; leave the gateway empty unless the lab says otherwise)
+
+Device            Interface         IP address        Subnet mask       MAC address (yours differ)
+PC1               FastEthernet0     10.10.10.11       255.255.255.0     0001.9641.1C3A  
+PC2               FastEthernet0     10.10.10.12       255.255.255.0     0060.2F84.5B22  
+PC3               FastEthernet0     10.10.10.13       255.255.255.0     00D0.BC3E.7A91  
+Rogue Laptop      FastEthernet0     10.10.10.99       255.255.255.0     00E0.F7C2.1D05  

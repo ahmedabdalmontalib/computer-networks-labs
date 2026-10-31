@@ -1,0 +1,4 @@
+PC addressing (Desktop -> IP Configuration -> Static; leave the gateway empty unless the lab says otherwise)
+
+Device            Interface         IP address        Subnet mask       Gateway         
+PC1               FastEthernet0     192.168.1.10      255.255.255.0     192.168.1.1     

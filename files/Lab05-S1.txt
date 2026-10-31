@@ -1,0 +1,40 @@
+! Computer Networks · Lab 5 · Console, Telnet and SSH · configuration script for S1
+! Paste into the CLI tab of S1 from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step A3 · S1: the basics and a management address
+enable
+configure terminal
+hostname S1
+no ip domain-lookup
+enable secret class
+line console 0
+password cisco
+login
+logging synchronous
+banner motd #Authorised access only - S1#
+interface vlan 1
+ip address 192.168.1.2 255.255.255.0
+no shutdown
+end
+copy running-config startup-config
+
+
+! ---- Step B3 · The same on S1
+configure terminal
+line vty 0 15
+password cisco
+login
+end
+
+! ---- Step C4 · SSH on the switch
+configure terminal
+ip domain-name campus.local
+username admin secret cisco123
+crypto key generate rsa
+1024
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+end
+copy running-config startup-config

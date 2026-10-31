@@ -1,0 +1,23 @@
+! Computer Networks · Lab 4 · VLAN Trunking and Inter-VLAN Routing · configuration script for R1
+! Paste into the CLI tab of R1 from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step B3 · One sub-interface per VLAN on R1
+enable
+configure terminal
+hostname R1
+interface gigabitEthernet 0/0
+no shutdown
+interface gigabitEthernet 0/0.10
+description VLAN 10 - IS_Students
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+interface gigabitEthernet 0/0.20
+description VLAN 20 - CS_Students
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+interface gigabitEthernet 0/0.30
+description VLAN 30 - IT_Students
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+end
+copy running-config startup-config

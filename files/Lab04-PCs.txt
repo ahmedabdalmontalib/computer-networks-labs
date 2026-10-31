@@ -1,0 +1,10 @@
+PC addressing (Desktop -> IP Configuration -> Static; leave the gateway empty unless the lab says otherwise)
+These are the Part B addresses (step B1). Part A keeps the Lab 3 addresses 192.168.1.x with no gateway.
+
+Device            Interface         IP address        Subnet mask       Gateway           VLAN            
+PC1               Fa0               192.168.10.11     255.255.255.0     192.168.10.1      10              
+PC2               Fa0               192.168.10.12     255.255.255.0     192.168.10.1      10              
+PC3               Fa0               192.168.20.21     255.255.255.0     192.168.20.1      20              
+PC4               Fa0               192.168.10.13     255.255.255.0     192.168.10.1      10              
+PC5               Fa0               192.168.20.22     255.255.255.0     192.168.20.1      20              
+PC6               Fa0               192.168.30.31     255.255.255.0     192.168.30.1      30              

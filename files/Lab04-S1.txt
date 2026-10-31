@@ -1,0 +1,21 @@
+! Computer Networks · Lab 4 · VLAN Trunking and Inter-VLAN Routing · configuration script for S1
+! Paste into the CLI tab of S1 at the S1# prompt: type enable first, and its password if one is set. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step A2 · Make Fa0/24 a trunk on S1
+configure terminal
+interface fastEthernet 0/24
+description Trunk to S2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+end
+
+! ---- Step B2 · Connect the router to a trunk
+configure terminal
+interface fastEthernet 0/23
+description Trunk to R1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+end
+
+! ---- Save
+copy running-config startup-config

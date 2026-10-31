@@ -1,0 +1,7 @@
+! Computer Networks · Lab 1 · Packet Tracer and the IOS Command Line · configuration script for Switch
+! Paste into the CLI tab of Switch from the user EXEC prompt. Prepared by Dr. Ahmed M. AbdAl-Montalib.
+
+! ---- Step B5 · Read and set the clock
+enable
+clock set 10:30:00 9 Sep 2026
+copy running-config startup-config
